@@ -18,22 +18,35 @@ export default (request, context) => {
 
     console.log(`serve page for ${url} `);
 
-    // render the appropriate page with the global layout
-    const html = layout({
-      url: url,
-      title: pages[path].title,
-      time: context.time || Date.now(),
-      content: pages[path].page({ geo: context.geo || 'empty', env: context.env, time: context.time}),
-      metaDescription: pages[path].metaDescription,
-    });
 
-    // send our response
-    return new Response(html, {
-      headers: {
-        "content-type": "text/html",
-        "x-app-name": "Netlify Edge Functions",
-    },
-    });
+    if(pages[path]) {
+        // render the appropriate page with the global layout
+        const html = layout({
+        url: url,
+        title: pages[path].title,
+        time: context.time || Date.now(),
+        content: pages[path].page({ geo: context.geo || 'empty', env: context.env, time: context.time}),
+        metaDescription: pages[path].metaDescription,
+        });
+
+        // send our response
+        return new Response(html, {
+        headers: {
+            "content-type": "text/html",
+            "x-app-name": "Netlify Edge Functions",
+        },
+        });
+    } else {
+        return new Response({
+            page: '404',
+            message: 'Not found'
+        }, {
+            headers: {
+                "content-type": "application/json",
+                "x-app-name": "Netlify Edge Functions",
+            },
+            });
+    }
   };
 
 export const config = {

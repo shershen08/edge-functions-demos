@@ -7,8 +7,8 @@ export default {
 
     <h2>Geolocation</h2>
     geo: {{geo}}<br>
-<!--    time: {{time}}<br>
-    env: {{env}}<br>-->
+ time: {{time}}<br>
+ <!--     env: {{env}}<br>-->
   `
   }
 }
