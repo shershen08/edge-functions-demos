@@ -22,6 +22,7 @@ export default (request, context) => {
     const html = layout({
       url: url,
       title: pages[path].title,
+      time: context.time || 'empty time',
       content: pages[path].page({ geo: context.geo || 'empty', env: context.env, time: context.time}),
       metaDescription: pages[path].metaDescription,
     });

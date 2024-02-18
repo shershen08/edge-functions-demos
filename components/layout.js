@@ -14,10 +14,12 @@ export default function layout(data) {
   <main class="main">
     <h1>${data.title}</h1>
 
+    data.time: ${data.time}
+
     data.url: ${data.url}
 
     <section class="home__section">
-     data.content: ${data.content}
+     data: ${data}
 
     <hr/>
 
