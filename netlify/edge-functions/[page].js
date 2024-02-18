@@ -22,13 +22,16 @@ export default (request, context) => {
     const html = layout({
       url: url,
       title: pages[path].title,
-      content: pages[path].page({ geo: context.geo, env: context.env, time: context.time}),
+      content: pages[path].page({ geo: context.geo || 'empty', env: context.env, time: context.time}),
       metaDescription: pages[path].metaDescription,
     });
 
     // send our response
     return new Response(html, {
-      headers: { "content-type": "text/html" },
+      headers: {
+        "content-type": "text/html",
+        "x-app-name": "Netlify Edge Functions",
+    },
     });
   };
 
