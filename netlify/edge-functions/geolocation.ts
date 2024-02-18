@@ -10,5 +10,5 @@ export default async (request: Request, context: Context) => {
     };
 
 export const config: Config = {
-    path: "/geolocation",
+    path: "/page-with-functions",
 };
