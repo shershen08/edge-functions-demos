@@ -1,10 +1,17 @@
+// LAYOUT
+import layout from "../../components/layout.js";
+
+// PAGES
 import pageHome from "../../pages/home/index.js";
 import pageWithFunctions from "../../pages/home/page-with-functions.js";
+
+// ROUTER
 const pages = {
     home: pageHome,
     functions: pageWithFunctions
 }
 
+// TEMPLATE
 export default (request, context) => {
     const url = new URL(request.url);
     const path = context.params?.page || "home";
