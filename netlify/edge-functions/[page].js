@@ -8,7 +8,7 @@ import pageWithFunctions from "../../pages/home/page-with-functions.js";
 // ROUTER
 const pages = {
     home: pageHome,
-    functions: pageWithFunctions
+    geolocation: pageWithFunctions
 }
 
 // TEMPLATE
@@ -22,7 +22,7 @@ export default (request, context) => {
     const html = layout({
       url: url,
       title: pages[path].title,
-      time: context.time || 'empty time',
+      time: context.time || Date.now(),
       content: pages[path].page({ geo: context.geo || 'empty', env: context.env, time: context.time}),
       metaDescription: pages[path].metaDescription,
     });
